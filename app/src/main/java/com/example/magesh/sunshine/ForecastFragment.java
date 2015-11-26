@@ -1,5 +1,6 @@
 package com.example.magesh.sunshine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -61,6 +63,15 @@ public class ForecastFragment extends Fragment {
                 "Weds - Cloudy - 88/63",
                 "Thurs - Asteroids - 88/63",
                 "Fri - Zombies - 88/63",
+                "Weds - Cloudy - 88/63",
+                "Thurs - Asteroids - 88/63",
+                "Fri - Zombies - 88/63",
+                "Weds - Cloudy - 88/63",
+                "Thurs - Asteroids - 88/63",
+                "Fri - Zombies - 88/63",
+                "Weds - Cloudy - 88/63",
+                "Thurs - Asteroids - 88/63",
+                "Fri - Zombies - 88/63",
                 "Sat - Meatballs - 88/63"
         };
 
@@ -78,7 +89,14 @@ public class ForecastFragment extends Fragment {
                 R.id.listview_forecast
         );
         listView.setAdapter(mForecastAdapter);
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String forecast = mForecastAdapter.getItem(position);
+                Intent intent = new Intent(getActivity(), DetailActivity.class).putExtra(Intent.EXTRA_TEXT, forecast);
+                startActivity(intent);
+            }
+        });
 
 
 
